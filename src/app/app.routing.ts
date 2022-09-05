@@ -6,38 +6,38 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full'
-  },
-  {
-    path: '',
-    component: AdminLayoutComponent,
-    children: [
-      {
-        path: '',
-        loadChildren: async () =>
-          await import('./layouts/admin-layout/admin-layout.module').then(
-            (x) => x.AdminLayoutModule
-          )
-      }
-    ]
-  },
-  {
-    path: '**',
-    redirectTo: 'dashboard'
-  }
+	{
+		path: '',
+		redirectTo: 'dashboard',
+		pathMatch: 'full',
+	},
+	{
+		path: '',
+		component: AdminLayoutComponent,
+		children: [
+			{
+				path: '',
+				loadChildren: async () =>
+					await import('./layouts/admin-layout/admin-layout.module').then(
+						(x) => x.AdminLayoutModule
+					),
+			},
+		],
+	},
+	{
+		path: '**',
+		redirectTo: 'dashboard',
+	},
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    BrowserModule,
-    RouterModule.forRoot(routes, {
-      useHash: true
-    })
-  ],
-  exports: []
+	imports: [
+		CommonModule,
+		BrowserModule,
+		RouterModule.forRoot(routes, {
+			useHash: true,
+		}),
+	],
+	exports: [],
 })
 export class AppRoutingModule {}
