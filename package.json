@@ -9,8 +9,7 @@
   },
   "scripts": {
     "ng": "ng",
-    "start-dev": "ng serve --port 8080",
-    "start": "ng serve -c production --port 80",
+    "start": "ng serve --port 8080",
     "build": "ng build",
     "test": "node spec/support/jasmine.config.js",
     "lint": "eslint 'src/*.{js,jsx,ts,tsx}'"
