@@ -132,7 +132,7 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
 
     this.chart.events.on('ready', (ev) => {
       const ukraine = polygonSeries.getPolygonById('UA');
-      ev.target.zoomToMapObject(ukraine, 5);
+      ev.target.zoomToMapObject(ukraine, 5, false, 4000);
       setTimeout(function () {
         ukraine.isActive = true;
       }, 1000);
