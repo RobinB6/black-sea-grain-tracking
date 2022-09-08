@@ -15,8 +15,8 @@
     "lint": "eslint 'src/*.{js,jsx,ts,tsx}'"
   },
   "dependencies": {
-    "@amcharts/amcharts5": "^5.2.20",
-    "@amcharts/amcharts5-geodata": "^5.0.3",
+    "@amcharts/amcharts4": "^4.10.27",
+    "@amcharts/amcharts4-geodata": "^4.1.23",
     "@angular/animations": "v13-lts",
     "@angular/cli": "^13.3.9",
     "@angular/common": "v13-lts",

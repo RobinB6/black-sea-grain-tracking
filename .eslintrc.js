@@ -10,6 +10,7 @@ module.exports = {
       rules: {
         '@typescript-eslint/strict-boolean-expressions': 'off',
         '@typescript-eslint/explicit-function-return-type': 'off',
+        '@typescript-eslint/consistent-type-assertions': 'off',
         '@typescript-eslint/semi': 'off',
         'no-tabs': 'off'
       }
