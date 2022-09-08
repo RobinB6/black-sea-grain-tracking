@@ -17,7 +17,7 @@ export const trips = [
     departure: '2022-08-01',
     cargo: 'Corn',
     cargo_size: 26527,
-    destination: 'Tartus, Syria?',
+    destination: 'Tartus, Syria',
     status: 'Delivered',
     notes:
 			'Original buyer refused to accept delivery, suspected new delivery location'
@@ -28,7 +28,7 @@ export const trips = [
     departure: '2022-08-05',
     cargo: 'Corn',
     cargo_size: 12000,
-    destination: 'Karasu,Turkey',
+    destination: 'Karasu, Turkey',
     status: 'Delivered'
   },
   {
@@ -55,8 +55,9 @@ export const trips = [
     departure: '2022-08-07',
     cargo: 'Corn',
     cargo_size: 66084,
-    destination: 'Iran?',
-    status: 'Delivered'
+    destination: 'Iran',
+    status: 'Delivered',
+    notes: 'Suspected delivery location'
   },
   {
     vname: 'Riva Wind',
@@ -191,7 +192,7 @@ export const trips = [
     departure: '2022-08-16',
     cargo: 'Wheat',
     cargo_size: 6161,
-    destination: 'Karasu,Turkey',
+    destination: 'Karasu, Turkey',
     status: 'Delivered'
   },
   {
@@ -236,8 +237,8 @@ export const trips = [
     departure: '2022-08-18',
     cargo: 'Corn',
     cargo_size: 27982,
-    destination: 'Romania?',
-    status: 'Shipped'
+    destination: 'Romania',
+    status: 'Delivered'
   },
   {
     vname: 'Ocean S',
@@ -372,7 +373,7 @@ export const trips = [
     cargo: 'Pea',
     cargo_size: 3700,
     destination: 'Mersin, Turkey',
-    status: 'Shipped'
+    status: 'Delivered'
   },
   {
     vname: 'Oris Sofi',
@@ -642,8 +643,9 @@ export const trips = [
     departure: '2022-09-01',
     cargo: 'Wheat',
     cargo_size: 28500,
-    destination: 'Turkey?',
-    status: 'Shipped'
+    destination: 'Turkey',
+    status: 'Shipped',
+    notes: 'Suspected delivery location'
   },
   {
     vname: 'Fulmar S',
@@ -832,6 +834,107 @@ export const trips = [
     cargo: 'Corn',
     cargo_size: 30000,
     destination: 'Egypt',
+    status: 'Shipped'
+  },
+  {
+    vname: 'Irmgard',
+    port_origin: 'Odesa',
+    departure: '2022-09-06',
+    cargo: 'Wheat',
+    cargo_size: 27500,
+    destination: 'Turkey',
+    status: 'Shipped'
+  },
+  {
+    vname: 'Queen Sara',
+    port_origin: 'Chornomorsk',
+    departure: '2022-09-06',
+    cargo: 'Corn',
+    cargo_size: 11091,
+    destination: 'Egypt',
+    status: 'Shipped'
+  },
+  {
+    vname: 'Oris Princess',
+    port_origin: 'Chornomorsk',
+    departure: '2022-09-06',
+    cargo: 'Sunflower meal',
+    cargo_size: 4510,
+    destination: 'Israel',
+    status: 'Shipped'
+  },
+  {
+    vname: 'Vitis',
+    port_origin: 'Yuzhny',
+    departure: '2022-09-06',
+    cargo: 'Sunflower oil',
+    cargo_size: 5800,
+    destination: 'Italy',
+    status: 'Shipped'
+  },
+  {
+    vname: 'Ocmis Adventure',
+    port_origin: 'Odesa',
+    departure: '2022-09-06',
+    cargo: 'Corn',
+    cargo_size: 4862,
+    destination: 'Turkey',
+    status: 'Shipped'
+  },
+  {
+    vname: 'New Levant',
+    port_origin: 'Odesa',
+    departure: '2022-09-06',
+    cargo: 'Wheat',
+    cargo_size: 7179,
+    destination: 'Turkey',
+    status: 'Shipped'
+  },
+  {
+    vname: 'Kaptan Cevdet',
+    port_origin: 'Chornomorsk',
+    departure: '2022-09-07',
+    cargo: 'Soybean',
+    cargo_size: 2472,
+    destination: 'Turkey',
+    status: 'Shipped'
+  },
+  {
+    vname: 'Dignity',
+    port_origin: 'Chornomorsk',
+    departure: '2022-09-07',
+    cargo: 'Sunflower seed',
+    cargo_size: 8200,
+    destination: 'Turkey',
+    status: 'Shipped'
+  },
+  {
+    vname: 'Seaguardian',
+    port_origin: 'Yuzhny',
+    departure: '2022-09-07',
+    cargo: 'Barley',
+    cargo_size: 62266,
+    destination: 'Spain',
+    status: 'Shipped',
+    notes:
+			'Carries barley, wheat, and sunflower seed. Amount of each individual commodity carried is unclear.'
+  },
+  {
+    vname: 'Eliana',
+    port_origin: 'Chornomorsk',
+    departure: '2022-09-07',
+    cargo: 'Sunflower oil',
+    cargo_size: 5200,
+    destination: 'Turkey',
+    status: 'Shipped'
+  },
+  {
+    vname: 'Super Henry',
+    port_origin: 'Odesa',
+    departure: '2022-09-07',
+    cargo: 'Wheat',
+    cargo_size: 51400,
+    destination: 'Kenya',
     status: 'Shipped'
   }
 ];
