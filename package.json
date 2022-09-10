@@ -63,8 +63,7 @@
   "license": "ISC",
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
-      "npx prettier --write src/app/",
-      "npx eslint --fix"
+      "npx prettier --write src/app/"
     ]
   }
 }

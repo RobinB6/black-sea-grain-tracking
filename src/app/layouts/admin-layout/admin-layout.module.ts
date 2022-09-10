@@ -11,12 +11,12 @@ import { CargoComponent } from 'src/app/cargo/cargo.component';
 import { AboutComponent } from 'src/app/about/about.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule.forChild(AdminLayoutRoutes),
-    FormsModule,
-    HotTableModule
-  ],
-  declarations: [TripsComponent, CargoComponent, AboutComponent]
+	imports: [
+		CommonModule,
+		RouterModule.forChild(AdminLayoutRoutes),
+		FormsModule,
+		HotTableModule,
+	],
+	declarations: [TripsComponent, CargoComponent, AboutComponent],
 })
 export class AdminLayoutModule {}
