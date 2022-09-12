@@ -400,7 +400,7 @@ export const trips = [
 		cargo: 'Wheat',
 		cargo_size: 63340,
 		destination: 'Sudan',
-		status: 'Shipped',
+		status: 'Delivered',
 	},
 	{
 		vname: 'Pretty Lady',
@@ -481,7 +481,7 @@ export const trips = [
 		cargo: 'Corn',
 		cargo_size: 39500,
 		destination: 'Italy',
-		status: 'Shipped',
+		status: 'Delivered',
 	},
 	{
 		vname: 'Melina',
@@ -490,7 +490,7 @@ export const trips = [
 		cargo: 'Corn',
 		cargo_size: 27500,
 		destination: 'Romania',
-		status: 'Shipped',
+		status: 'Delivered',
 	},
 	{
 		vname: 'Peace M',
@@ -499,7 +499,7 @@ export const trips = [
 		cargo: 'Corn',
 		cargo_size: 24800,
 		destination: 'Romania',
-		status: 'Shipped',
+		status: 'Delivered',
 	},
 	{
 		vname: 'Ash Baltic',
@@ -508,7 +508,7 @@ export const trips = [
 		cargo: 'Corn',
 		cargo_size: 11000,
 		destination: 'Egypt',
-		status: 'Shipped',
+		status: 'Delivered',
 	},
 	{
 		vname: 'Karteria',
@@ -517,7 +517,7 @@ export const trips = [
 		cargo: 'Wheat',
 		cargo_size: 37500,
 		destination: 'Turkey',
-		status: 'Shipped',
+		status: 'Delivered',
 		notes: 'For Yemen, WFP',
 	},
 	{
@@ -527,7 +527,7 @@ export const trips = [
 		cargo: 'Corn',
 		cargo_size: 2236,
 		destination: 'Turkey',
-		status: 'Shipped',
+		status: 'Delivered',
 	},
 	{
 		vname: 'Seajoy',
@@ -536,7 +536,7 @@ export const trips = [
 		cargo: 'Corn',
 		cargo_size: 64215,
 		destination: 'Spain',
-		status: 'Shipped',
+		status: 'Delivered',
 	},
 	{
 		vname: 'Lady Zehma',
@@ -553,8 +553,8 @@ export const trips = [
 		departure: '2022-08-30',
 		cargo: 'Corn',
 		cargo_size: 33000,
-		destination: 'Spain',
-		status: 'Shipped',
+		destination: 'Ravenna, Italy',
+		status: 'Delivered',
 	},
 	{
 		vname: 'Simas',
@@ -563,16 +563,7 @@ export const trips = [
 		cargo: 'Wheat',
 		cargo_size: 15000,
 		destination: 'Italy',
-		status: 'Shipped',
-	},
-	{
-		vname: 'Afanasiy Matyushenko',
-		port_origin: 'Chornomorsk',
-		departure: '2022-08-31',
-		cargo: 'Wheat',
-		cargo_size: 3000,
-		destination: 'Tekirdag, Turkey',
-		status: 'Shipped',
+		status: 'Delivered',
 	},
 	{
 		vname: 'Maran Astronomer',
@@ -778,7 +769,7 @@ export const trips = [
 		departure: '2022-09-03',
 		cargo: 'Rapeseed',
 		cargo_size: 31098,
-		destination: 'Amsterdam, The Netherlands',
+		destination: 'Belgium',
 		status: 'Shipped',
 	},
 	{
@@ -788,6 +779,15 @@ export const trips = [
 		cargo: 'Corn',
 		cargo_size: 20500,
 		destination: 'Italy',
+		status: 'Shipped',
+	},
+	{
+		vname: 'Afanasiy Matyushenko',
+		port_origin: 'Chornomorsk',
+		departure: '2022-09-04',
+		cargo: 'Wheat',
+		cargo_size: 3000,
+		destination: 'Tekirdag, Turkey',
 		status: 'Shipped',
 	},
 	{
@@ -839,8 +839,16 @@ export const trips = [
 		vname: 'Irmgard',
 		port_origin: 'Odesa',
 		departure: '2022-09-06',
-		cargo: 'Wheat',
-		cargo_size: 27500,
+		cargo: [
+			{
+				cargo: 'Wheat',
+				cargo_size: 27500,
+			},
+			{
+				cargo: 'Corn',
+				cargo_size: 7179,
+			},
+		],
 		destination: 'Turkey',
 		status: 'Shipped',
 	},
@@ -877,7 +885,7 @@ export const trips = [
 		departure: '2022-09-06',
 		cargo: 'Corn',
 		cargo_size: 4862,
-		destination: 'Turkey',
+		destination: 'Larnaca, Cyprus',
 		status: 'Shipped',
 	},
 	{
@@ -908,17 +916,6 @@ export const trips = [
 		status: 'Shipped',
 	},
 	{
-		vname: 'Seaguardian',
-		port_origin: 'Yuzhny',
-		departure: '2022-09-07',
-		cargo: 'Barley',
-		cargo_size: 62266,
-		destination: 'Spain',
-		status: 'Shipped',
-		notes:
-			'Carries barley, wheat, and sunflower seed. Amount of each individual commodity carried is unclear.',
-	},
-	{
 		vname: 'Eliana',
 		port_origin: 'Chornomorsk',
 		departure: '2022-09-07',
@@ -937,6 +934,27 @@ export const trips = [
 		status: 'Shipped',
 	},
 	{
+		vname: 'Seaguardian',
+		port_origin: 'Yuzhny',
+		departure: '2022-09-07',
+		cargo: [
+			{
+				cargo: 'Barley',
+				cargo_size: 34071,
+			},
+			{
+				cargo: 'Wheat',
+				cargo_size: 20095,
+			},
+			{
+				cargo: 'Sunflower meal',
+				cargo_size: 8640,
+			},
+		],
+		destination: 'Spain',
+		status: 'Shipped',
+	},
+	{
 		vname: 'Dignity',
 		port_origin: 'Chornomorsk',
 		departure: '2022-09-08',
@@ -952,6 +970,68 @@ export const trips = [
 		cargo: 'Corn',
 		cargo_size: 9531,
 		destination: 'Turkey',
+		status: 'Shipped',
+	},
+	{
+		vname: 'Filyoz',
+		port_origin: 'Odesa',
+		departure: '2022-09-08',
+		cargo: 'Sunflower oil',
+		cargo_size: 5200,
+		destination: 'Turkey',
+		status: 'Shipped',
+	},
+	{
+		vname: 'Santana',
+		port_origin: 'Odesa',
+		departure: '2022-09-08',
+		cargo: 'Wheat',
+		cargo_size: 10000,
+		destination: 'Italy',
+		status: 'Shipped',
+	},
+	{
+		vname: 'Captain Adam 1',
+		port_origin: 'Chornomorsk',
+		departure: '2022-09-08',
+		cargo: 'Wheat',
+		cargo_size: 9300,
+		destination: 'Turkey',
+		status: 'Shipped',
+	},
+	{
+		vname: 'Sevil',
+		port_origin: 'Chornomorsk',
+		departure: '2022-09-09',
+		cargo: 'Rapeseed',
+		cargo_size: 4700,
+		destination: 'Romania',
+		status: 'Shipped',
+	},
+	{
+		vname: 'Kiran America',
+		port_origin: 'Chornomorsk',
+		departure: '2022-09-09',
+		cargo: [
+			{
+				cargo: 'Barley',
+				cargo_size: 30000,
+			},
+			{
+				cargo: 'Corn',
+				cargo_size: 20000,
+			},
+		],
+		destination: 'China',
+		status: 'Shipped',
+	},
+	{
+		vname: 'Super Bayern',
+		port_origin: 'Yuhzny',
+		departure: '2022-09-09',
+		cargo: 'Corn',
+		cargo_size: 33000,
+		destination: 'Egypt',
 		status: 'Shipped',
 	},
 ];
