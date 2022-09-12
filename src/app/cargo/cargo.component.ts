@@ -17,6 +17,7 @@ interface Cargo {
 @Component({
 	encapsulation: ViewEncapsulation.None,
 	templateUrl: './cargo.component.html',
+	styleUrls: ['./cargo.component.scss'],
 })
 export class CargoComponent implements OnInit {
 	dataset: Cargo[] = [];
@@ -33,13 +34,26 @@ export class CargoComponent implements OnInit {
 	getCargo(): void {
 		const sums: Cargo[] = [];
 		getTripData().forEach((i) => {
-			if (sums.find((c) => c.name === i.cargo) == null) {
-				sums.push({ name: i.cargo, size: 0, trips: 0 });
+			if (Array.isArray(i.cargo)) {
+				// If multiple types of cargo in one ship
+				i.cargo.forEach((j) => {
+					if (sums.find((c) => c.name === j.cargo) == null) {
+						sums.push({ name: j.cargo, size: 0, trips: 0 });
+					}
+					const c = sums.find((c) => c.name === j.cargo);
+					c.size += j.cargo_size;
+					c.trips += 1;
+				});
+			} else {
+				// If single type of cargo in one ship
+				if (sums.find((c) => c.name === i.cargo) == null) {
+					sums.push({ name: i.cargo, size: 0, trips: 0 });
+				}
+				const c = sums.find((c) => c.name === i.cargo);
+				c.size += i.cargo_size;
+				c.trips += 1;
 			}
-			const c = sums.find((c) => c.name === i.cargo);
-			c.size += i.cargo_size;
-			c.trips += 1;
 		});
-		this.dataset = sums;
+		this.dataset.push(...sums);
 	}
 }

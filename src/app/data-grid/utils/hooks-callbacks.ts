@@ -35,12 +35,12 @@ export const addClassesToRows: AddClassesToRows = (
 		return;
 	}
 
-	// Add class to selected rows
-	if (cellProperties.instance.getDataAtRowProp(row, '0')) {
-		Handsontable.dom.addClass(parentElement, SELECTED_CLASS);
-	} else {
-		Handsontable.dom.removeClass(parentElement, SELECTED_CLASS);
-	}
+	// // Add class to selected rows
+	// if (cellProperties.instance.getDataAtRowProp(row, '0')) {
+	// 	Handsontable.dom.addClass(parentElement, SELECTED_CLASS);
+	// } else {
+	// 	Handsontable.dom.removeClass(parentElement, SELECTED_CLASS);
+	// }
 
 	// Add class to odd TRs
 	if (row % 2 === 0) {

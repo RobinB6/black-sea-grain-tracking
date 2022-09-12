@@ -11,6 +11,7 @@ import {
 @Component({
 	encapsulation: ViewEncapsulation.None,
 	templateUrl: './trips.component.html',
+	styleUrls: ['./trips.component.scss'],
 })
 export class TripsComponent implements OnInit {
 	dataset = [];
@@ -35,15 +36,28 @@ export class TripsComponent implements OnInit {
 
 	getTrips(): void {
 		getTripData().forEach((i) => {
+			let cargo = i.cargo;
+			let cargoSize = i.cargo_size;
+			let notes = i.notes;
+			if (Array.isArray(i.cargo)) {
+				cargo = i.cargo.map((v) => v.cargo).join(', ');
+				cargoSize = i.cargo
+					.map((v) => v.cargo_size)
+					.reduce((pSum, a) => pSum + a, 0);
+				const cargoes = i.cargo
+					.map((v) => `${v.cargo}: ${v.cargo_size}`)
+					.join(', ');
+				notes = notes ? `${notes}, ${cargoes}` : cargoes;
+			}
 			this.dataset.push([
 				i.vname,
 				i.port_origin,
 				i.departure,
-				i.cargo,
-				i.cargo_size,
+				cargo,
+				cargoSize,
 				i.destination,
 				i.status,
-				i.notes,
+				notes,
 			]);
 		});
 	}

@@ -611,20 +611,19 @@ export const trips = [
 		status: 'Shipped',
 	},
 	{
-		vname: 'Eneida (wheat)',
+		vname: 'Eneida',
 		port_origin: 'Chornomorsk',
 		departure: '2022-09-01',
-		cargo: 'Wheat',
-		cargo_size: 35470,
-		destination: 'Turkey',
-		status: 'Shipped',
-	},
-	{
-		vname: 'Eneida (corn)',
-		port_origin: 'Chornomorsk',
-		departure: '2022-09-01',
-		cargo: 'Corn',
-		cargo_size: 8560,
+		cargo: [
+			{
+				cargo: 'Wheat',
+				cargo_size: 35470,
+			},
+			{
+				cargo: 'Corn',
+				cargo_size: 8560,
+			},
+		],
 		destination: 'Turkey',
 		status: 'Shipped',
 	},
