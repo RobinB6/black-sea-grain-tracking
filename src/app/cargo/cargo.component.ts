@@ -30,9 +30,9 @@ export class CargoComponent implements OnInit {
 	colHeaders = [
 		'Commodity',
 		'Number of Shipments',
-		'On ships (mt)',
+		'Enroute (mt)',
 		'Delivered (mt)',
-		'Total (On ships + Delivered)',
+		'Total (Enroute + Delivered)',
 	];
 
 	ngOnInit(): void {
@@ -40,8 +40,8 @@ export class CargoComponent implements OnInit {
 	}
 
 	getCargo(): void {
-		const sums: Cargo[] = [];
-		const allTotal = <Cargo>{
+		let sums: Cargo[] = [];
+		let allTotal = <Cargo>{
 			name: 'Total',
 			trips: 0,
 			on_ship: 0,
@@ -51,55 +51,39 @@ export class CargoComponent implements OnInit {
 		getTripData().forEach((i) => {
 			if (Array.isArray(i.cargo)) {
 				// If multiple types of cargo in one ship
-				// Todo: DRY cleanup
 				i.cargo.forEach((j) => {
-					if (sums.find((c) => c.name === j.cargo) == null) {
-						sums.push({
-							name: j.cargo,
-							trips: 0,
-							on_ship: 0,
-							delivered: 0,
-							total: 0,
-						});
-					}
-					const c = sums.find((c) => c.name === j.cargo);
-					i.status === 'Shipped'
-						? (c.on_ship += j.cargo_size)
-						: (c.delivered += j.cargo_size);
-					c.total += j.cargo_size;
-					c.trips += 1;
-
-					i.status === 'Shipped'
-						? (allTotal.on_ship += j.cargo_size)
-						: (allTotal.delivered += j.cargo_size);
-					allTotal.total += j.cargo_size;
-					allTotal.trips += 1;
+					[sums, allTotal] = this.addCargo(j, sums, allTotal);
 				});
 			} else {
 				// If single type of cargo in one ship
-				if (sums.find((c) => c.name === i.cargo) == null) {
-					sums.push({
-						name: i.cargo,
-						trips: 0,
-						on_ship: 0,
-						delivered: 0,
-						total: 0,
-					});
-				}
-				const c = sums.find((c) => c.name === i.cargo);
-				i.status === 'Shipped'
-					? (c.on_ship += i.cargo_size)
-					: (c.delivered += i.cargo_size);
-				c.total += i.cargo_size;
-				c.trips += 1;
-
-				i.status === 'Shipped'
-					? (allTotal.on_ship += i.cargo_size)
-					: (allTotal.delivered += i.cargo_size);
-				allTotal.total += i.cargo_size;
-				allTotal.trips += 1;
+				[sums, allTotal] = this.addCargo(i, sums, allTotal);
 			}
 		});
 		this.dataset.push(...sums, allTotal);
+	}
+
+	addCargo(trip, sums, allTotal) {
+		if (sums.find((c) => c.name === trip.cargo) == null) {
+			sums.push({
+				name: trip.cargo,
+				trips: 0,
+				on_ship: 0,
+				delivered: 0,
+				total: 0,
+			});
+		}
+		const c = sums.find((c) => c.name === trip.cargo);
+		trip.status === 'Shipped'
+			? (c.on_ship += trip.cargo_size)
+			: (c.delivered += trip.cargo_size);
+		c.total += trip.cargo_size;
+		c.trips += 1;
+
+		trip.status === 'Shipped'
+			? (allTotal.on_ship += trip.cargo_size)
+			: (allTotal.delivered += trip.cargo_size);
+		allTotal.total += trip.cargo_size;
+		allTotal.trips += 1;
+		return [sums, allTotal];
 	}
 }
