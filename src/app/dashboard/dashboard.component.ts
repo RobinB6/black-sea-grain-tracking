@@ -1,7 +1,6 @@
 import { Component, NgZone, AfterViewInit, OnDestroy } from '@angular/core';
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4maps from '@amcharts/amcharts4/maps';
-import am4geodata_worldHigh from '@amcharts/amcharts4-geodata/worldHigh';
 
 import {
 	getCountryCodeData,
@@ -23,7 +22,7 @@ interface MapData {
 export class DashboardComponent implements AfterViewInit, OnDestroy {
 	chart: am4maps.MapChart;
 	imageSeries: am4maps.MapImageSeries;
-	private GeoDataWorldLow = null;
+	private GeoDataWorldHigh = null;
 	private am4maps: typeof import('@amcharts/amcharts4/maps');
 	private am4core: typeof import('@amcharts/amcharts4/core');
 
@@ -36,14 +35,13 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
 				import(/* webpackChunkName: "am4core" */ '@amcharts/amcharts4/core'),
 				import(/* webpackChunkName: "am4maps" */ '@amcharts/amcharts4/maps'),
 				import(
-					/* webpackChunkName: "amcharts" */ '@amcharts/amcharts4-geodata/worldLow'
+					/* webpackChunkName: "amcharts" */ '@amcharts/amcharts4-geodata/worldHigh'
 				),
 			])
 				.then((modules) => {
 					this.am4core = modules[0];
 					this.am4maps = modules[1];
-
-					this.GeoDataWorldLow = modules[2].default;
+					this.GeoDataWorldHigh = modules[2].default;
 
 					this.setupMap();
 				})
@@ -59,7 +57,7 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
 
 	setupMap() {
 		this.chart = am4core.create('chartdiv', am4maps.MapChart);
-		this.chart.geodata = am4geodata_worldHigh;
+		this.chart.geodata = this.GeoDataWorldHigh;
 		this.chart.projection = new am4maps.projections.NaturalEarth1();
 
 		const polygonSeries = new am4maps.MapPolygonSeries();
@@ -165,7 +163,13 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
 				? i.destination.split(', ')[1]
 				: i.destination;
 			const d = data.filter((f) => f.name === country)[0];
-			d.value += i.cargo_size;
+			if (Array.isArray(i.cargo)) {
+				d.value += i.cargo
+					.map((v) => v.cargo_size)
+					.reduce((pSum, a) => pSum + a, 0);
+			} else {
+				d.value += i.cargo_size;
+			}
 		});
 		return data.filter((f) => f.value > 0);
 	}
