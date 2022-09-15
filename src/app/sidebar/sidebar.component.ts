@@ -16,6 +16,12 @@ export const ROUTES: RouteInfo[] = [
 		class: '',
 	},
 	{
+		path: '/destinations',
+		title: 'Destinations',
+		icon: 'fa-solid fa-anchor-circle-check',
+		class: '',
+	},
+	{
 		path: '/about',
 		title: 'About',
 		icon: 'fa-solid fa-circle-info',

@@ -1,0 +1,19 @@
+<div>
+	<hot-table
+		class="hot"
+		[data]="dataset"
+		height="85vh"
+		[afterGetColHeader]="alignHeaders"
+		[colHeaders]="colHeaders"
+		[rowHeaders]="true"
+		[dropdownMenu]="true"
+		[contextMenu]="true"
+		[multiColumnSorting]="true"
+		[filters]="true"
+		[readOnly]="true"
+		[afterOnCellMouseDown]="changeCheckboxCell"
+		[beforeRenderer]="addClassesToRows"
+		licenseKey="non-commercial-and-evaluation"
+	>
+	</hot-table>
+</div>

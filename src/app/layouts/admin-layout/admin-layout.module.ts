@@ -8,6 +8,7 @@ import { AdminLayoutRoutes } from './admin-layout.routing';
 
 import { TripsComponent } from 'src/app/trips/trips.component';
 import { CargoComponent } from 'src/app/cargo/cargo.component';
+import { DestinationsComponent } from 'src/app/destinations/destinations.component';
 import { AboutComponent } from 'src/app/about/about.component';
 
 @NgModule({
@@ -17,6 +18,11 @@ import { AboutComponent } from 'src/app/about/about.component';
 		FormsModule,
 		HotTableModule,
 	],
-	declarations: [TripsComponent, CargoComponent, AboutComponent],
+	declarations: [
+		TripsComponent,
+		CargoComponent,
+		DestinationsComponent,
+		AboutComponent,
+	],
 })
 export class AdminLayoutModule {}
