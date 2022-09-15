@@ -29,7 +29,7 @@ export class DestinationsComponent implements OnInit {
 	changeCheckboxCell = changeCheckboxCell;
 	colHeaders = [
 		'Country',
-		'Number of Shipments',
+		'Trips',
 		'Enroute (mt)',
 		'Delivered (mt)',
 		'Total (Enroute + Delivered)',
@@ -58,12 +58,19 @@ export class DestinationsComponent implements OnInit {
 				// If single type of cargo in one ship
 				[sums, allTotal] = this.addCargo(i, i, sums, allTotal);
 			}
+
+			// Calculate trips based on vessels, not individual grain types
+			const country = i.destination.includes(',')
+				? i.destination.split(', ')[1]
+				: i.destination;
+			const c = sums.find((c) => c.country === country);
+			c.trips += 1;
+			allTotal.trips += 1;
 		});
 		this.dataset.push(...sums, allTotal);
 	}
 
 	addCargo(trip, cargo, sums, allTotal) {
-		console.log('addCargo', trip, sums, allTotal);
 		const country = trip.destination.includes(',')
 			? trip.destination.split(', ')[1]
 			: trip.destination;
@@ -77,18 +84,15 @@ export class DestinationsComponent implements OnInit {
 			});
 		}
 		const c = sums.find((c) => c.country === country);
-		console.log('found c', c);
 		trip.status === 'Shipped'
 			? (c.on_ship += cargo.cargo_size)
 			: (c.delivered += cargo.cargo_size);
 		c.total += cargo.cargo_size;
-		c.trips += 1;
 
 		trip.status === 'Shipped'
 			? (allTotal.on_ship += cargo.cargo_size)
 			: (allTotal.delivered += cargo.cargo_size);
 		allTotal.total += cargo.cargo_size;
-		allTotal.trips += 1;
 		return [sums, allTotal];
 	}
 }
